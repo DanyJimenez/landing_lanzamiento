@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Launcher</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            background-color: #000;
+            color: #fff;
+        }
+        .left {
+            width: 50%;
+            background-image: url('montanista.jpg');
+            background-size: cover;
+            display: flex;
+            height: 100vh;
+            align-items: top;
+            justify-content: center;
+            border-right: 1px solid #fff; /* Línea divisoria */
+            background-color: aqua;
+            background-image: url("./polygonal-blue-background-vector.jpg");
+        }
+        .right {
+            width: 50%;
+            height: 100vh;
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: whitesmoke;
+            color: black;
+        }
+        .logo {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .countdown {
+            font-size: 5em;
+            font-weight: 600;
+        }
+        .title {
+            font-size: 2em;
+            align-items:start;
+            justify-content: left;
+            font-weight:900;
+            width: 90%;
+        }
+        .email-field {
+            margin-top: 20px;
+
+        }
+        #input{
+            padding: 30px;
+            border-bottom-left-radius: 30px;
+            border-top-left-radius: 30px;
+        }
+        #button{
+            padding: 30px;
+            border-bottom-right-radius: 30px;
+            border-top-right-radius: 30px;
+            background-color:aquamarine;
+        }
+        #parrafo{
+            font-size: 0.5em;
+            color: gray;
+            width: 90%;
+        }
+    </style>
+</head>
+<body>
+    <div class="left">
+        <div class="logo">Launcher</div>
+    </div>
+    <div class="right">
+        <div id="countdown" class="countdown">Loading...</div>
+        <div class="title">Launcher<br>Launching Soon!</div>
+        <p id="parrafo">Far far away, behind the word mountains, far from <br> the countries Vokalia and Consonantia, there live <br> the blind texts.</p>
+        <div class="email-field">
+            <input id="input" type="email" placeholder="Enter your email">
+            <button id="button">SEND</button>
+        </div>
+    </div>
+    <script>
+        // Función para actualizar el reloj
+        function updateCountdown() {
+            const launchDate = new Date("2024-01-01T00:00:00Z");  // Cambia la fecha de lanzamiento según tu necesidad
+            const currentDate = new Date();
+            const timeDifference = currentDate.getTime() - launchDate.getTime();
+
+            const totalSeconds = Math.floor(timeDifference / 1000);
+            const days = Math.floor(totalSeconds / (3600 * 24));
+            const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            const formattedTime = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            document.getElementById("countdown").innerHTML = formattedTime;
+        }
+
+        // Actualiza el reloj cada segundo
+        setInterval(updateCountdown, 1000);
+
+        // Asegúrate de que la función se ejecute al cargar la página
+        updateCountdown();
+    </script>
+</body>
+</html>
